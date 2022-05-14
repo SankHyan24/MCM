@@ -1,6 +1,14 @@
 #pragma once
 #include <iostream>
 
+inline int my_abs(int num)
+{
+    if (num < 0)
+        return -num;
+    else
+        return num;
+}
+
 class Locate
 {
 public:
@@ -14,7 +22,7 @@ public:
             throw "Y must be between 0 and 7";
         if (z < 0 || z > 2) // 2bit
             throw "Z must be between 0 and 2";
-        locate_ = x * 32 + y * 4 + z;
+        locate_ = (x << 5) + (y << 2) + z;
     }
     ~Locate() = default;
 
@@ -22,18 +30,19 @@ public:
     {
         if (x < 0 || x > 14) // 4bit
             throw "X must be between 0 and 14";
-        locate_ = x * 32 + getY() * 4 + getZ();
+        locate_ = (locate_ & 0x01F) + (x << 5);
     }
     inline void setY(int y)
     {
         if (y < 0 || y > 7) // 3bit
             throw "Y must be between 0 and 7";
-        locate_ = getX() * 32 + y * 4 + getZ();
+        locate_ = (locate_ & 0xFE3) + (y << 2);
     }
     inline void setZ(int z)
     {
         if (z < 0 || z > 2) // 2bit
             throw "Z must be between 0 and 2";
+        locate_ = (locate_ & 0xFFD) + z;
     }
     inline void setLocate(int x, int y, int z)
     {
@@ -43,11 +52,11 @@ public:
             throw "Y must be between 0 and 7";
         if (z < 0 || z > 2) // 2bit
             throw "Z must be between 0 and 2";
-        locate_ = x * 32 + y * 4 + z;
+        locate_ = (x << 5) + (y << 2) + z;
     }
-    inline int getX() const { return locate_ / 32; }
-    inline int getY() const { return (locate_ % 32) / 4; }
-    inline int getZ() const { return locate_ % 4; }
+    inline int getX() const { return (locate_ >> 5); }
+    inline int getY() const { return ((locate_ & 31) >> 2); }
+    inline int getZ() const { return (locate_ & 3); }
     // out stream
     friend std::ostream &operator<<(std::ostream &os, const Locate &locate)
     {
@@ -59,58 +68,17 @@ private:
     int locate_;
 };
 
-// class Medicine
-// {
-// public:
-//     Medicine() = default;
-//     Medicine(const Medicine &) = default;
-//     Medicine(std::string name_, int x, int y, int z)
-//     {
-//         if (x < 0 || x > 14) // 4bit
-//             throw "X must be between 0 and 14";
-//         if (y < 0 || y > 7) // 3bit
-//             throw "Y must be between 0 and 7";
-//         if (z < 0 || z > 2) // 2bit
-//             throw "Z must be between 0 and 2";
-//         locate = x * 32 + y * 4 + z;
-//         name = name_;
-//     }
-//     ~Medicine() = default;
-
-//     inline void setX(int x)
-//     {
-//         if (x < 0 || x > 14) // 4bit
-//             throw "X must be between 0 and 14";
-//         locate = x * 32 + getY() * 4 + getZ();
-//     }
-//     inline void setY(int y)
-//     {
-//         if (y < 0 || y > 7) // 3bit
-//             throw "Y must be between 0 and 7";
-//         locate = getX() * 32 + y * 4 + getZ();
-//     }
-//     inline void setZ(int z)
-//     {
-//         if (z < 0 || z > 2) // 2bit
-//             throw "Z must be between 0 and 2";
-//     }
-//     inline void setLocate(int x, int y, int z)
-//     {
-//         if (x < 0 || x > 14) // 4bit
-//             throw "X must be between 0 and 14";
-//         if (y < 0 || y > 7) // 3bit
-//             throw "Y must be between 0 and 7";
-//         if (z < 0 || z > 2) // 2bit
-//             throw "Z must be between 0 and 2";
-//         locate = x * 32 + y * 4 + z;
-//     }
-//     inline void setName(std::string name_) { name = name_; }
-//     inline int getX() { return locate / 32; }
-//     inline int getY() { return (locate % 32) / 4; }
-//     inline int getZ() { return locate % 4; }
-//     inline std::string getName() { return name; }
-
-// private:
-//     std::string name;
-//     int locate;
-// };
+/***
+ * calculate the distance between two medicine
+ * Parameters:
+ * @param locate1  medicine a
+ * @param locate2  medicine b
+ * @return : distance between medicine a and b for robot
+ */
+inline int dist(const Locate &locate1, const Locate &locate2)
+{
+    int xLength = 20 * my_abs(locate1.getX() - locate2.getX());
+    int yLength = 25 * my_abs(locate1.getY() - locate2.getY());
+    int zLength = (xLength == 0 && yLength == 0) ? 20 * my_abs(locate1.getZ() - locate2.getZ()) : 20 * (1 + locate1.getZ() + locate2.getZ());
+    return xLength + yLength + zLength;
+}

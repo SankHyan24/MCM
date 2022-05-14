@@ -2,10 +2,11 @@
 #include <fstream>
 #include <sstream>
 #include <unordered_map>
-
+#include <vector>
 #include <medicine.hpp>
 using namespace std;
-unordered_map<string, Locate> medicine_map;
+unordered_map<string, Locate> medmap; // medicine map from name to Locate
+vector<string> medlist;               // medicine name list
 void read_file()
 {
     ifstream inFile;
@@ -23,7 +24,8 @@ void read_file()
         for (int x = 0; x < 15; x++)
         {
             ss >> word;
-            medicine_map[word] = Locate(x, y, z);
+            medmap[word] = Locate(x, y, z);
+            medlist.push_back(word);
         }
     }
     inFile.close();
@@ -31,6 +33,9 @@ void read_file()
 int main()
 {
     read_file();
-    for (auto i : medicine_map)
+    for (auto i : medmap)
         cout << i.first << " " << i.second << endl;
+    cout << dist(medmap[medlist[0]], medmap[medlist[2]]) << endl;
+    cout << medmap[medlist[0]] << endl;
+    cout << medmap[medlist[2]] << endl;
 }
