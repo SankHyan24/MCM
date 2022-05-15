@@ -1,6 +1,6 @@
 该单位搜集整理了近年来使用过的处方,并对每种药材加以编号。若对给定的一张处方,机器人总按药材编号的顺序、或总按处方上药材出现的顺序逐一拣取药材,如何编排斗柜中每种药材的位置
 dist.txt            斗柜位置和距离的对应关系
-letter_freq.txt     
-maxn.txt
-newn.txt
-word_refined.txt
+letter_freq.txt     单词频率的统计
+maxn.txt            第三题maxn的限制条件
+newn.txt            第二题机器人的各种操作频率（n[i][j]只表示ij，不表示ji的情况）
+word_refined.txt    处理后全小写且无重复字母的词表
