@@ -203,7 +203,7 @@ agricult
 ahed
 aid
 aide
-AIDS
+aids
 ail
 ailment
 aim
@@ -411,7 +411,7 @@ aprovl
 aproximte
 aproximtely
 aproximtn
-April
+april
 apron
 aptly
 aptiude
@@ -553,7 +553,7 @@ auditor
 auditorm
 augment
 augmentio
-Augst
+augst
 aunt
 auntie
 authenic
@@ -644,7 +644,7 @@ baner
 banquet
 bar
 barecu
-BQ
+bq
 bare
 barely
 bargin
@@ -743,8 +743,7 @@ bewildr
 bewildrmnt
 beyond
 bias
-Bible
-Biblca
+bile
 bilca
 bilography
 bicyle
@@ -921,8 +920,8 @@ bucket
 buckle
 bud
 budy
-Budhism
-Budhist
+budhism
+budhist
 budget
 budgetary
 bufalo
@@ -1061,7 +1060,7 @@ cath
 category
 cater
 cathedrl
-Catholic
+catholi
 catle
 caulifower
 cause
@@ -1077,7 +1076,7 @@ celbrity
 cel
 celar
 phone
-Celsiu
+celsiu
 cius
 cemnt
 cemtry
@@ -1169,10 +1168,10 @@ chopstik
 chord
 chore
 chorus
-Christ
-Christma
-Christan
-Christany
+christ
+christma
+christan
+christany
 chroni
 chronialy
 chronile
@@ -1466,8 +1465,8 @@ confrm
 confrmity
 confrt
 confrtai
-Confucia
-Confuciasm
+confuia
+confuiasm
 confuse
 confusi
 congratule
@@ -1826,7 +1825,7 @@ deciv
 decit
 decption
 decptiv
-Decmbr
+decmbr
 decnt
 deci
 decison
@@ -2301,7 +2300,7 @@ earthquk
 eas
 east
 eastrn
-Easter
+eastr
 easy
 easily
 goin
@@ -2777,7 +2776,7 @@ feast
 feat
 feathr
 featur
-Februay
+februay
 fedral
 fedration
 fe
@@ -2989,7 +2988,7 @@ frequncy
 fresh
 freshman
 fricton
-Friday
+friday
 friend
 friendly
 friendshp
@@ -3491,7 +3490,7 @@ hypotesi
 hypoteical
 hysterical
 hysteria
-I
+i
 ice
 icy
 icebrg
@@ -3778,7 +3777,7 @@ intermda
 intermday
 interal
 interaol
-Inter
+inter
 inter
 interp
 interpao
@@ -3860,7 +3859,7 @@ jack
 jacket
 jail
 jam
-Janury
+janury
 jar
 jargon
 jaw
@@ -3897,10 +3896,10 @@ judical
 judicary
 juice
 juicy
-July
+july
 jump
 junctio
-June
+june
 jungle
 junior
 junk
@@ -4238,7 +4237,7 @@ map
 mar
 marthon
 marble
-March
+march
 march
 margin
 marginl
@@ -4256,8 +4255,8 @@ marty
 martydo
 marvel
 ous
-Marxism
-Marxist
+marxis
+marxist
 masculine
 masculinty
 mask
@@ -4286,7 +4285,7 @@ maturiy
 maxiu
 maxize
 maxil
-May
+may
 may
 maybe
 mayor
@@ -4313,7 +4312,7 @@ mediat
 mediaton
 mediator
 medical
-Medicar
+medicar
 medicaton
 medicn
 medicnal
@@ -4471,7 +4470,7 @@ moentu
 moentus
 monarchy
 monarch
-Monday
+monday
 money
 monetary
 monitr
@@ -4689,7 +4688,7 @@ nourishmet
 novel
 novelist
 novelty
-Novembr
+novembr
 now
 nowadys
 nowher
@@ -4754,7 +4753,7 @@ ocuren
 ocean
 oceani
 o
-October
+octber
 od
 odity
 ods
@@ -4779,9 +4778,9 @@ okay
 old
 fashioned
 olive
-Olympic
-Olympics
-Olympiad
+olympic
+olympics
+olympiad
 omit
 omisn
 on
@@ -6028,7 +6027,7 @@ satifcon
 satifcory
 sature
 saturion
-Saturdy
+saturdy
 sauce
 sauge
 savge
@@ -6144,7 +6143,7 @@ sentimal
 separt
 separtion
 separti
-Septmbr
+septmbr
 sequnc
 sequntial
 sergant
@@ -6745,7 +6744,7 @@ sumit
 sumon
 sun
 suny
-Sunday
+sunday
 sunlight
 sunrie
 sunet
@@ -6898,7 +6897,7 @@ telphon
 telscop
 telscopi
 telvison
-TV
+tv
 tel
 teling
 telr
@@ -6947,7 +6946,7 @@ texur
 than
 thank
 thankful
-Thanksgiv
+thanksgiv
 tha
 the
 thear
@@ -7009,7 +7008,7 @@ thrus
 thumb
 thunder
 thunderos
-Thursday
+thursday
 thus
 tick
 ticke
@@ -7186,7 +7185,7 @@ trying
 tub
 tube
 tuck
-Tuesday
+tuesday
 tug
 tuion
 tumble
@@ -7492,7 +7491,7 @@ websit
 wed
 weding
 wedg
-Wednsay
+wednsay
 wek
 wekly
 wekday
