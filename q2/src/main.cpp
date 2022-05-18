@@ -4,10 +4,12 @@
 #include <vector>
 #include <algorithm>
 #include <utility.hpp>
+#include <unordered_map>
 #include <assert.h>
 using namespace std;
 
 vector<string> words;
+unordered_map<int, int> counter;
 int freq[28][28];
 int letter[28];
 
@@ -16,13 +18,16 @@ void read_recipe()
     ifstream fin("../data/word_refined.txt");
     string word;
     while (fin >> word)
+    {
+        if (counter.count(word.size()) == 0)
+            counter[word.size()] = 0;
+        counter[word.size()]++;
         words.push_back(word);
+    }
     fin.close();
     cout << "Read " << words.size() << " words." << endl;
-
-    for (int i = 0; i < 28; i++)
-        for (int j = 0; j < 28; j++)
-            freq[i][j] = 0;
+    for (auto i : counter)
+        cout << i.first << ": " << i.second << endl;
     //统计字母组合
     // for (auto &word : words)
     // {
