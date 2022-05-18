@@ -21,18 +21,14 @@ Solution::Solution(const string &filename)
         maxn_init();
         init_maxn = true;
     }
-    // read from file
     ifstream fin(filename);
     for (int i = 0; i < 28; i++)
         Array[i] = i;
     for (int i = 0; i < 28 * 28; i++)
         fin >> Matrix[i];
     fin.close();
-    cout << "read from file" << endl;
-    if (Acceptable())
-        cout << "Acceptable" << endl;
-    else
-        cout << "Not Acceptable" << endl;
+    if (!Acceptable())
+        throw "Not Acceptable";
 }
 Solution::Solution(const Solution &solution)
 {
@@ -53,18 +49,10 @@ bool Solution::Acceptable()
     for (int i = 0; i < 28; i++)
         s.insert(Array[i]);
     if (s.size() != 28)
-    {
-        // cout << "Error: duplicate array" << endl;
         return false;
-    }
     for (int i = 0; i < 28 * 28; i++)
-        if (Matrix[i] > maxn[i])
-        {
-            // cout << "Error: matrix value overflow at" << i / 28 << " row " << i % 28 << " column" << endl;
-            // cout << "maxn:" << maxn[i] << endl;
-            // cout << "Matrix:" << Matrix[i] << endl;
+        if (Matrix[i] > maxn[i] || Matrix[i] < 0)
             return false;
-        }
     return true;
 }
 

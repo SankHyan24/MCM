@@ -2,10 +2,9 @@
 #include <set>
 inline int cast_from_double_to_int(double s, double e, double t)
 {
-    // cout << "number is " << std::floor((tmp > 1.0 ? 1.0 : tmp) * 26) + 1;
-    return rand() % 5;
+    return rand() % 10;
 }
-Simuanneal::Simuanneal(arr Arr, mat Mat, int max_iter, double temp_init, double temp_final, double alpha)
+Simuanneal::Simuanneal(arr Arr, mat Mat, int max_iter, ld temp_init, ld temp_final, ld alpha)
 {
     this->solution = solution;
     this->max_iteration_num = max_iter;
@@ -45,6 +44,7 @@ Solution *Simuanneal::RandomNeighbor(const Solution &solution)
 void Simuanneal::run()
 {
     now_iteration_num = 0;
+    converse_num = 0;
     temperature = init_temperature;
     Solution *solution_neighbor = nullptr;
     while (now_iteration_num < max_iteration_num && temperature > final_temperature)
@@ -54,14 +54,12 @@ void Simuanneal::run()
         {
             delete solution;
             solution = solution_neighbor;
+            temperature *= alpha;
+            PrintState();
+            now_iteration_num++;
         }
         else
-        {
             delete solution_neighbor;
-        }
-        temperature *= alpha;
-        PrintState();
-        now_iteration_num++;
     }
     delete solution_neighbor;
     cout << "Running done" << endl;
@@ -70,12 +68,24 @@ void Simuanneal::run()
 
 bool Simuanneal::Acceptable(const Solution &solution_neighbor)
 {
-    if (solution_neighbor.GetFitness() < solution->GetFitness())
+    double fitness = solution->GetFitness();
+    double n_fitness = solution_neighbor.GetFitness();
+    current_fitness = fitness;
+    if (n_fitness < best_fitness)
+    {
+        best_fitness = n_fitness;
+        best_mat = solution_neighbor.GetMatrix();
+        best_arr = solution_neighbor.GetArray();
+        converse_num = 0;
+    }
+    else
+        converse_num++;
+    if (n_fitness < fitness)
         return true;
     else
     {
-        double p = RandomUtils::RandomFloat(0.0, 1.0);
-        if (p < std::exp((solution->GetFitness() - solution_neighbor.GetFitness()) / temperature))
+        double p = RandomUtils::Randomfloat(0.0, 1.0);
+        if (p < std::exp((fitness - n_fitness) / temperature))
             return true;
         else
             return false;
@@ -84,17 +94,16 @@ bool Simuanneal::Acceptable(const Solution &solution_neighbor)
 
 void Simuanneal::PrintResult() const
 {
+    std::cout << "The best fitness is: " << best_fitness << std::endl;
     std::cout << "The best solution is: " << std::endl;
     solution->print();
-    std::cout << "The best fitness is: " << solution->GetFitness() << std::endl;
 }
 
 void Simuanneal::PrintState() const
 {
+    std::cout << "\033[2J\033[0;0H";
     std::cout << "Iteration: " << now_iteration_num << std::endl;
     std::cout << "Temperature: " << temperature << std::endl;
-    // std::cout << "The best solution is: " << std::endl;
-    // solution->print();
-    std::cout << "The best fitness is: " << solution->GetFitness() << std::endl
-              << std::endl;
+    std::cout << "The current fitness is: " << current_fitness << std::endl;
+    std::cout << "The best fitness is: " << best_fitness << std::endl;
 }

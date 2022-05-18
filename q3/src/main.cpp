@@ -4,13 +4,15 @@
 #include <chrono>
 int main()
 {
+    using timer = std::chrono::high_resolution_clock;
     // srand(time(NULL));
     srand(0);
-    std::cout << "Hello World!" << std::endl;
     Solution s("../data/initn.txt");
-    s.print();
-    Simuanneal sa(s.GetArray(), s.GetMatrix(), 100000, 10000, 0.01, 0.9999);
+    Simuanneal sa(s.GetArray(), s.GetMatrix(), 800000, 100.0, 1e-20, 0.99999);
+    auto start = timer::now();
     sa.run();
+    auto end = timer::now();
     cout << "done" << endl;
+    cout << "time: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << endl;
     return 0;
 }

@@ -46,8 +46,16 @@ struct mat
         set<int> rand6_set;
         while (rand6_set.size() != 6)
         {
-            int tmp = RandomUtils::Randomint(0, 27);
-            rand6_set.insert(tmp);
+            if (rand6_set.size() <= 2)
+            {
+                int tmp = RandomUtils::Randomint(0, 26);
+                rand6_set.insert(tmp);
+            }
+            else
+            {
+                int tmp = RandomUtils::Randomint(0, 27);
+                rand6_set.insert(tmp);
+            }
         }
         for (auto i : rand6_set)
             chx[cnt++] = i;
@@ -64,6 +72,15 @@ struct mat
     {
         return m[x * 28 + y];
     }
+    void print() const
+    {
+        for (int i = 0; i < 28; i++)
+        {
+            for (int j = 0; j < 28; j++)
+                cout << m[i * 28 + j] << " ";
+            cout << endl;
+        }
+    }
 };
 
 class Solution
@@ -79,7 +96,13 @@ public:
     const arr &GetArray() const { return Array; }
     const mat &GetMatrix() const { return Matrix; }
     double GetFitness() const;
-    void print() const { Array.print(); }
+    void print() const
+    {
+        cout << "Array:" << endl;
+        Array.print();
+        cout << "Matrix:" << endl;
+        Matrix.print();
+    }
 
 private:
     static bool init_maxn;

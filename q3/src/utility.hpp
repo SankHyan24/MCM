@@ -5,8 +5,9 @@
 #include <random>
 #include <vector>
 
-namespace RandomUtils
+class RandomUtils
 {
+public:
     static void RandomString(char *buf, size_t len)
     {
         std::random_device r;
@@ -37,5 +38,10 @@ namespace RandomUtils
         std::default_random_engine rng(r());
         std::uniform_real_distribution<float_t> uniform_dist(low, high);
         return uniform_dist(rng);
+    }
+    static double Randomfloat(double low, double high)
+    {
+        double r = low + static_cast<double>(rand()) / static_cast<double>(RAND_MAX / (high - low));
+        return r;
     }
 };
