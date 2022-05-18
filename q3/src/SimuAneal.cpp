@@ -12,6 +12,7 @@ Simuanneal::Simuanneal(arr Arr, mat Mat, int max_iter, ld temp_init, ld temp_fin
     this->init_temperature = temp_init;
     this->final_temperature = temp_final;
     this->alpha = alpha;
+    this->reheat_limit = max_iter / 100;
     solution = new Solution(Arr, Mat);
 }
 Simuanneal::~Simuanneal()
@@ -47,8 +48,14 @@ void Simuanneal::run()
     converse_num = 0;
     temperature = init_temperature;
     Solution *solution_neighbor = nullptr;
-    while (now_iteration_num < max_iteration_num && temperature > final_temperature)
+    while (now_iteration_num < max_iteration_num && temperature > final_temperature && reheat_flag < reheat_repeat_max)
     {
+        if (converse_num > reheat_limit)
+        {
+            reheat_flag++;
+            converse_num = 0;
+            temperature = init_temperature / 10;
+        }
         solution_neighbor = RandomNeighbor(*solution);
         if (Acceptable(*solution_neighbor))
         {
@@ -77,6 +84,7 @@ bool Simuanneal::Acceptable(const Solution &solution_neighbor)
         best_mat = solution_neighbor.GetMatrix();
         best_arr = solution_neighbor.GetArray();
         converse_num = 0;
+        reheat_flag = 0;
     }
     else
         converse_num++;
