@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 #include <SimuAneal.hpp>
 #include <chrono>
 int main()
@@ -16,5 +17,6 @@ int main()
     cout << "done" << endl;
     cout << "time: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << endl;
     cout << "seed:" << seed << endl;
+    system("pause");
     return 0;
 }
