@@ -23,7 +23,7 @@ Solution::Solution(const string &filename)
     }
     ifstream fin(filename);
     for (int i = 0; i < 28; i++)
-        Array[i] = i;
+        fin >> Array[i];
     for (int i = 0; i < 28 * 28; i++)
         fin >> Matrix[i];
     fin.close();

@@ -9,8 +9,14 @@ int main()
     // srand(time(NULL));
     int seed = time(NULL);
     srand(seed);
-    Solution s("../data/initn.txt");
+    cout << "input 0 to optimize the default solution." << endl;
+    cout << "input 1 to optimize the solution solved by LINGO" << endl;
+    bool is_default = false;
+    cin >> is_default;
+    string file_name = is_default ? "../data/bestn.txt" : "../data/initn.txt";
+    Solution s(file_name);
     Simuanneal sa(s.GetArray(), s.GetMatrix(), 80000000, 1000.0, 1e-20, 0.99999);
+    // cout << "The init cost is " << s.GetFitness() << endl;
     auto start = timer::now();
     sa.run();
     auto end = timer::now();
