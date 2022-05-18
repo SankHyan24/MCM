@@ -8,7 +8,7 @@ int main()
     // srand(time(NULL));
     srand(0);
     Solution s("../data/initn.txt");
-    Simuanneal sa(s.GetArray(), s.GetMatrix(), 800000, 100.0, 1e-20, 0.99999);
+    Simuanneal sa(s.GetArray(), s.GetMatrix(), 800000, 10000.0, 1e-20, 0.99999);
     auto start = timer::now();
     sa.run();
     auto end = timer::now();

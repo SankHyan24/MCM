@@ -5,7 +5,7 @@
 using namespace std;
 
 const int CASE_NUM = 28;
-const double ROAD_RATE = 1.0 / 28; // 这里需要重新估算
+const double ROAD_RATE = 1.0 / 28 / 10; // 这里需要重新估算
 extern int maxn[28 * 28];
 struct arr
 {
