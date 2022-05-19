@@ -58,7 +58,8 @@ void read_recipe()
         stringstream ss(line);
         string word;
         while (ss >> word)
-            recipe.push_back(word);
+            if (word != medlist[0])
+                recipe.push_back(word);
         cout << "solve recipe: " << num << endl;
         timer::time_point start_time = timer::now();
         solve_recipe();

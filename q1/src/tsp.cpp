@@ -22,12 +22,20 @@ void solve_recipe()
     ssize = recipe.size();
     M = 1 << (ssize - 1);
     // calculate the cost of each medicine
+    for (int i = 0; i < MAX_RECIPE_LEN; i++)
+    {
+        for (int j = 0; j < (1 << (MAX_RECIPE_LEN - 1)); j++)
+            dp[i][j] = 0;
+        visited[i] = false;
+    }
+    path.clear();
     for (int i = 0; i < ssize; i++)
         for (int j = i + 1; j < ssize; j++)
         {
             cost[i][j] = dist(medmap[recipe[i]], medmap[recipe[j]]);
             cost[j][i] = cost[i][j];
         }
+
     // initialize the dp array
     for (int i = 0; i < ssize; i++)
         dp[i][0] = cost[i][0];
