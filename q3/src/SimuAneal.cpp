@@ -104,7 +104,10 @@ void Simuanneal::PrintResult() const
 {
     std::cout << "The best fitness is: " << best_fitness << std::endl;
     std::cout << "The best solution is: " << std::endl;
-    solution->print();
+    cout << "Array:" << endl;
+    best_arr.print();
+    cout << "Matrix:" << endl;
+    best_mat.print();
 }
 
 void Simuanneal::PrintState() const
